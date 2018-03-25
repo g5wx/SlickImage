@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+	<head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Slick Image - CSS3 Filters Editor and Generator</title>
+        <meta name="description" content="CSS3 Image Filters Editor and Generator - apply CSS3 filters to your images quickly and easily online." />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/generator.css" />
+        <script type="text/javascript" src="js/generator.js"></script>
+
+	</head>
+	<body class="light">
+
+        <!-- Intro upload label -->
+        <label id="introLabel" class="active" for="uploadImage" title="Upload your image">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M407.276,193.922c-6.568,-67.907 -64.766,-121.1 -135.595,-121.1c-54.561,0 -101.545,31.419 -123.268,76.856c-7.275,-2.684 -15.156,-4.076 -23.239,-4.076c-37.587,0 -68,29.927 -68,66.913c0,8.054 1.415,15.809 4.143,22.967c-29.605,17.002 -49.611,48.719 -49.611,84.91c0,52.496 41.932,100.917 94.573,103.8l113.367,0l0,-104.795l-48.701,0c-9.902,0 -14.954,-11.732 -8.084,-18.692l86.288,-87.395c4.446,-4.474 11.721,-4.474 16.065,0l86.288,87.395c6.871,6.96 1.92,18.692 -8.083,18.692l-48.701,0l0,104.994l100.736,0c59.917,-4.176 107.304,-55.977 107.304,-115.831c0.101,-55.976 -41.224,-105.49 -95.482,-114.638Z"/></svg>
+        </label>
+
+        <!-- Preview image -->
+        <div id="previewBox" style="max-width: 800px">
+
+            <!-- New image wrapper -->
+            <div class="new">
+                <div class="info"></div>
+                <img id="newImage" src="" />
+            </div>
+
+            <!-- Old image wrapper -->
+            <div class="old">
+                <div class="info"></div>
+                <img id="oldImage" src="" />
+            </div>
+
+            <!-- Upload input -->
+            <input type="file" id="uploadImage" name="uploadImage" accept="image/x-png, image/jpeg" hidden />
+            <label for="uploadImage" title="Upload another image">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M407.276,193.922c-6.568,-67.907 -64.766,-121.1 -135.595,-121.1c-54.561,0 -101.545,31.419 -123.268,76.856c-7.275,-2.684 -15.156,-4.076 -23.239,-4.076c-37.587,0 -68,29.927 -68,66.913c0,8.054 1.415,15.809 4.143,22.967c-29.605,17.002 -49.611,48.719 -49.611,84.91c0,52.496 41.932,100.917 94.573,103.8l113.367,0l0,-104.795l-48.701,0c-9.902,0 -14.954,-11.732 -8.084,-18.692l86.288,-87.395c4.446,-4.474 11.721,-4.474 16.065,0l86.288,87.395c6.871,6.96 1.92,18.692 -8.083,18.692l-48.701,0l0,104.994l100.736,0c59.917,-4.176 107.304,-55.977 107.304,-115.831c0.101,-55.976 -41.224,-105.49 -95.482,-114.638Z" style="fill:#ccc;fill-rule:nonzero;"/></svg>
+            </label>
+
+            <!-- Before/after slider -->
+            <div id="slideImage" class="slider"></div>
+
+        </div>
+
+        <!-- Side panel -->
+        <div id="panel">
+
+            <!-- Initial overlay -->
+            <div class="overlay"></div>
+
+            <!-- Panel slider -->
+            <div id="slidePanel" class="slider"></div>
+
+            <!-- GitHub link -->
+            <a href="https://github.com/g5wx/SlickImage" class="github" title="Check out Slick Image - CSS3 filters editor and generator on GitHub">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 284 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M141.463,3.83c-77.255,0 -139.901,62.632 -139.901,139.901c0,61.81 40.086,114.25 95.673,132.749c6.992,1.295 9.559,-3.035 9.559,-6.73c0,-3.336 -0.13,-14.357 -0.19,-26.047c-38.921,8.463 -47.134,-16.506 -47.134,-16.506c-6.364,-16.168 -15.533,-20.47 -15.533,-20.47c-12.693,-8.683 0.957,-8.505 0.957,-8.505c14.048,0.987 21.445,14.419 21.445,14.419c12.478,21.386 32.728,15.202 40.712,11.628c1.255,-9.04 4.881,-15.214 8.882,-18.708c-31.074,-3.535 -63.739,-15.533 -63.739,-69.139c0,-15.272 5.465,-27.754 14.414,-37.551c-1.453,-3.524 -6.241,-17.753 1.355,-37.024c0,0 11.748,-3.757 38.483,14.343c11.16,-3.1 23.128,-4.654 35.017,-4.71c11.889,0.056 23.866,1.61 35.047,4.71c26.702,-18.1 38.434,-14.343 38.434,-14.343c7.615,19.271 2.824,33.5 1.371,37.024c8.971,9.797 14.399,22.279 14.399,37.551c0,53.736 -32.728,65.565 -63.881,69.028c5.018,4.342 9.489,12.855 9.489,25.908c0,18.719 -0.162,33.784 -0.162,38.392c0,3.723 2.518,8.085 9.61,6.712c55.556,-18.52 95.591,-70.94 95.591,-132.731c0,-77.269 -62.636,-139.901 -139.898,-139.901Z"/></svg>
+            </a>
+
+            <!-- Mode switcher -->
+            <input type="checkbox" id="darkMode" name="darkMode" hidden />
+            <label for="darkMode" title="Toggle dark mode">Dark mode</label>
+
+            <!-- Controls -->
+            <form id="controls" name="controls">
+
+                <!-- Manual controls -->
+                <div id="manualControls">
+                    <div class="field">
+                        <div class="title">Grayscale</div>
+                        <input id="filter_grayscale" data-unit="%" class="adjust" type="range" value="0" max="100" data-init-val="0" />
+                        <div class="value">0%</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Sepia</div>
+                        <input id="filter_sepia" data-unit="%" class="adjust" type="range" value="0" max="100" data-init-val="0" />
+                        <div class="value">0%</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Blur</div>
+                        <input id="filter_blur" data-unit="px" class="adjust" type="range" value="0" max="50" data-init-val="0" />
+                        <div class="value">0px</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Brightness</div>
+                        <input id="filter_brightness" data-unit="" class="adjust" type="range" value="1" max="5" step="0.01" data-init-val="1" />
+                        <div class="value">1</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Contrast</div>
+                        <input id="filter_contrast" data-unit="%" class="adjust" type="range" value="100" max="500" data-init-val="100" />
+                        <div class="value">100%</div>
+                    </div>                        
+                    <div class="field">
+                        <div class="title">Hue rotate</div>
+                        <input id="filter_hue-rotate" data-unit="deg" class="adjust" type="range" value="0" max="360" data-init-val="0" />
+                        <div class="value">0deg</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Invert</div>
+                        <input id="filter_invert" data-unit="%" class="adjust" type="range" value="0" max="100" data-init-val="0" />
+                        <div class="value">0%</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Opacity</div>
+                        <input id="filter_opacity" data-unit="%" class="adjust" type="range" value="100" max="100" data-init-val="100" />
+                        <div class="value">100%</div>
+                    </div>
+                    <div class="field">
+                        <div class="title">Saturate</div>
+                        <input id="filter_saturate" data-unit="%" class="adjust" type="range" value="100" max="500" data-init-val="100" />
+                        <div class="value">100%</div>
+                    </div>
+                </div>
+
+                <!-- Quick filters -->
+                <div class="quickFilters">
+                    <div class="field">
+                        <div class="title">Quick filters: </div>
+                        <input id="adjust_1" class="radio" type="radio" name="autoAdjust" value="brightness(1.05) contrast(105%) saturate(105%)" hidden />
+                        <label for="adjust_1" class="radio">Soft</label>
+                        <input id="adjust_2" class="radio" type="radio" name="autoAdjust" value="brightness(1.1) contrast(110%) saturate(110%)" hidden />
+                        <label for="adjust_2" class="radio">Normal</label>
+                        <input id="adjust_3" class="radio" type="radio" name="autoAdjust" value="brightness(1.2) contrast(120%) saturate(120%)" hidden />
+                        <label for="adjust_3" class="radio">Expose</label>
+                        <input id="adjust_4" class="radio" type="radio" name="autoAdjust" value="contrast(155%) brightness(0.85) saturate(135%)" hidden />
+                        <label for="adjust_4" class="radio">Old</label>
+                        <input id="adjust_5" class="radio" type="radio" name="autoAdjust" value="contrast(115%) sepia(45%) brightness(1.15) saturate(120%)" hidden />
+                        <label for="adjust_5" class="radio">Retro</label>
+                        <input id="adjust_6" class="radio" type="radio" name="autoAdjust" value="grayscale(100%) contrast(110%)" hidden />
+                        <label for="adjust_6" class="radio">B&amp;W</label>
+                        <input id="adjust_7" class="radio" type="radio" name="autoAdjust" value="brightness(1.15) contrast(110%)" hidden />
+                        <label for="adjust_7" class="radio">Bright</label>
+                        <input id="adjust_8" class="radio" type="radio" name="autoAdjust" value="brightness(0.85) contrast(115%)" hidden />
+                        <label for="adjust_8" class="radio">Darker</label>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- User actions -->
+            <div class="actions">
+                <div class="field">
+                    <div class="title">Download quality: </div>
+                    <input id="quality_1" class="radio" type="radio" name="imageQuality" value="0.25" hidden />
+                    <label for="quality_1" class="radio">25%</label>
+                    <input id="quality_2" class="radio" type="radio" name="imageQuality" value="0.5" hidden />
+                    <label for="quality_2" class="radio">50%</label>
+                    <input id="quality_3" class="radio" type="radio" name="imageQuality" value="0.75" hidden />
+                    <label for="quality_3" class="radio">75%</label>
+                    <input id="quality_4" class="radio" type="radio" name="imageQuality" value="1" hidden checked />
+                    <label for="quality_4" class="radio">100%</label>
+                </div>
+                <div id="resetAll" class="action">Start over</div>
+                <a href="#" id="generate" class="action generate">Download</a>
+            </div>
+
+            <!-- Markup -->
+            <div id="openMarkup">or get the CSS and HTML</div>
+            <div id="markup">
+                <div id="allGood">
+                    <p>You can use the CSS and HTML markup below to style your image.</p>
+                    <div class="title">HTML</div>
+                    <pre>&lt;img src="image.jpg" class="slickImage" /&gt;</pre>
+                    <div class="title">CSS</div>
+                    <pre>.slickImage {<br />&nbsp;&nbsp;&nbsp;&nbsp;-webkit-filter: <div id="cssFilters1"></div>;<br />&nbsp;&nbsp;&nbsp;&nbsp;filter: <div id="cssFilters2"></div>;<br />}</pre>
+                </div>
+                <div id="nono">
+                    <p>Looks like you haven't applied any filters yet. Get creative and come back.</p>
+                </div>
+                <div title="Go back">
+                    <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="closeMarkup" width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M10.285,26.225c0.429,0.434 1.143,0.434 1.587,0c0.429,-0.419 0.429,-1.117 0,-1.536l-8.047,-7.868l26.554,0c0.619,-0.001 1.111,-0.482 1.111,-1.087c0,-0.605 -0.492,-1.102 -1.111,-1.102l-26.554,0l8.047,-7.853c0.429,-0.434 0.429,-1.134 0,-1.552c-0.444,-0.434 -1.159,-0.434 -1.587,0l-9.952,9.731c-0.444,0.419 -0.444,1.117 0,1.536l9.952,9.731Z"/></svg>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Temporary canvas -->
+        <canvas id="canvas"></canvas>
+
+	</body>
+</html>

@@ -1,0 +1,685 @@
+
+/* Reset and basics
+----------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+
+    vertical-align: baseline;
+    line-height: normal;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html, 
+body {
+    width: 100%;
+}
+div {
+    display: inline-block;
+}
+
+/* Variables
+----------------------*/
+
+:root {
+    
+    /* Light theme */
+    --light-bg-color: #ededed;
+    --light-el-color: #fff;
+    --light-panel-color: #fff;
+    --light-txt-color: #222;
+    --light-slider-track: #ccc;
+    /* Dark theme */
+    --dark-bg-color: #222;
+    --dark-panel-color: #333;
+    --dark-txt-color: #bbb;
+    --dark-slider-track: #666;
+    /* Misc */
+    --primary-color: #24b5c9;
+    --light-gray: #bbb;
+    --medium-gray: #999;
+    --dark-gray: #666;
+    --panel-width: 400px;
+    
+    --transition-all: all .2s ease;
+    --transition-opacity: opacity .1s ease;
+    --transition-filter: filter .1s ease;
+
+}
+
+/* Theme and commons
+----------------------*/
+
+body {
+    transition: var(--transition-all);
+}
+/* Light theme */
+body.light {
+    background: var(--light-bg-color);
+    color: var(--light-txt-color);
+}
+body.light #introLabel {
+    color: #555;
+}
+body.light #introLabel svg {
+    fill: #aaa;
+}
+body.light #introLabel:hover svg {
+    fill: #555;
+}
+body.light #panel .field input[type=range]::-webkit-slider-runnable-track {
+    background: var(--light-slider-track);
+}
+body.light #panel .field input[type=range]::-webkit-slider-thumb,
+body.light #panel .field label.radio:before,
+body.light #panel label[for="darkMode"]:after {
+    background: var(--light-el-color);
+    border-color: var(--light-slider-track);
+}
+body.light #panel .field input[type=range]:hover::-webkit-slider-runnable-track,
+body.light #panel .field input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--dark-slider-track);
+}
+body.light #panel .field input[type=range]:hover::-webkit-slider-thumb,
+body.light #panel .field input[type=range]:focus::-webkit-slider-thumb {
+    border-color: var(--dark-slider-track);
+}
+body.light #panel .actions > .action:not(.generate) {
+    border-color: var(--dark-bg-color);
+    color: var(--dark-bg-color);
+}
+body.light #panel .actions > .action.generate {
+    border-color: var(--primary-color);
+    color: var(--light-el-color);
+}
+body.light #panel .actions > .action:hover {
+    background: var(--dark-bg-color);
+    border-color: var(--dark-bg-color);
+    color: var(--light-el-color);
+}
+body.light #panel {
+    background: var(--light-panel-color);
+}
+body.light #panel .github svg {
+    fill: #181717;
+}
+body.light #panel .overlay {
+    background: rgba(255, 255, 255, .7);
+}
+body.light #panel #markup {
+    background: var(--light-panel-color);
+}
+body.light #panel #markup pre {
+    background: var(--light-bg-color);
+}
+body.light #panel #markup svg {
+    fill: var(--medium-gray);
+}
+body.light #panel #markup svg:hover {
+    fill: var(--dark-gray);
+}
+body.light::-webkit-scrollbar-track {
+    background-color: var(--light-panel-color);
+}
+body.light::-webkit-scrollbar-thumb {
+    background-color: var(--light-gray);
+}
+body.light::-webkit-scrollbar-thumb:hover {
+    background-color: var(--medium-gray);
+}
+/* Dark theme */
+body.dark {
+    background: var(--dark-bg-color);
+    color: var(--dark-txt-color);
+}
+body.dark #introLabel {
+    color: #fff;
+}
+body.dark #introLabel svg {
+    fill: #999;
+}
+body.dark #introLabel:hover svg {
+    fill: #fff;
+}
+body.dark #panel .field input[type=range]::-webkit-slider-runnable-track {
+    background: var(--dark-slider-track);
+}
+body.dark #panel .field input[type=range]::-webkit-slider-thumb,
+body.dark #panel .field label.radio:before {
+    background: var(--dark-panel-color);
+    border-color: var(--dark-slider-track);
+}
+body.dark #panel .field input[type=range]:hover::-webkit-slider-runnable-track,
+body.dark #panel .field input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--light-slider-track);
+}
+body.dark #panel .field input[type=range]:hover::-webkit-slider-thumb,
+body.dark #panel .field input[type=range]:focus::-webkit-slider-thumb {
+    border-color: var(--light-slider-track);
+}
+body.dark #panel .actions > .action:not(.generate) {
+    border-color: var(--light-el-color);
+    color: var(--light-el-color);
+    opacity: .6;
+}
+body.dark #panel .actions > .action:not(.generate):hover {
+    opacity: 1;
+}
+body.dark #panel .actions > .action.generate {
+    border-color: var(--primary-color);
+    color: var(--light-el-color);
+}
+body.dark #panel .actions > .action:hover {
+    background: var(--light-el-color);
+    border-color: var(--light-el-color);
+    color: var(--dark-bg-color);
+}
+body.dark #panel {
+    background: var(--dark-panel-color);
+}
+body.dark #panel .github svg {
+    fill: #ccc;
+}
+body.dark #panel .overlay {
+    background: rgba(56, 56, 56, .7);
+}
+body.dark #panel #markup {
+    background: var(--dark-panel-color);
+}
+body.dark #panel #markup pre {
+    background: var(--dark-bg-color);
+}
+body.dark #panel #markup svg {
+    fill: var(--medium-gray);
+}
+body.dark #panel #markup svg:hover {
+    fill: var(--light-gray);
+}
+body.dark::-webkit-scrollbar-track {
+    background-color: var(--dark-panel-color);
+}
+body.dark::-webkit-scrollbar-thumb {
+    background-color: var(--dark-gray);
+}
+body.dark::-webkit-scrollbar-thumb:hover {
+    background-color: var(--medium-gray);
+}
+/* Commons */
+::-webkit-scrollbar-track {
+    border-radius: 4px;
+    box-shadow: none;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    box-shadow: none;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+#canvas {
+    display: none;
+}
+.slider {
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+    cursor: ew-resize;
+    opacity: 0;
+    transition: var(--transition-opacity);
+}
+.slider:before,
+.slider:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    content: "";
+    border-style: solid;
+    opacity: .6;
+    transition: var(--transition-opacity);
+}
+.slider:before {
+    border-width: 6px 0 6px 7px;
+    left: 10px;
+}
+.slider:after {
+    border-width: 6px 7px 6px 0;
+    right: 10px;
+}
+#introLabel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    text-align: center; 
+    cursor: pointer;
+}
+#introLabel svg {
+    transition: var(--transition-all);
+}
+#introLabel.active svg {
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-duration: 1.2s;
+    animation-delay: 0.2s;
+    animation-name: bounceIn;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/* Preview box
+----------------------*/
+
+#previewBox {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background: transparent;
+    overflow: hidden;
+}
+/* Images */
+#previewBox .old {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    max-width: 100%;
+    overflow: hidden;
+    z-index: 2;
+}
+#previewBox .new {
+    float: left;
+}
+#previewBox img {
+    user-select: none;
+    transition: var(--transition-filter);
+    display: block;
+}
+#previewBox .info {
+    position: absolute;
+    bottom: 10px;
+    color: #ccc;
+    font-size: 10px;
+    letter-spacing: .5px;
+    padding: 4px 8px;
+    opacity: 0;
+    transition: var(--transition-all);
+}
+#previewBox .new .info {
+    right: 10px;
+    z-index: 2;
+}
+#previewBox .old .info {
+    left: 10px;
+    z-index: 3;
+}
+#previewBox .new .info:before {
+    content: "After";
+}
+#previewBox .old .info:before {
+    content: "Before";
+}
+#previewBox:hover .info {
+    opacity: .7;
+}
+/* Upload label */
+#previewBox label[for="uploadImage"] {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: var(--transition-all);
+    z-index: 3;
+}
+#previewBox:hover label[for="uploadImage"] {
+    opacity: .6;
+}
+#previewBox label[for="uploadImage"]:hover {
+    opacity: .9;
+}
+#previewBox label[for="uploadImage"] svg {
+    width: 40px;
+}
+/* Slider */
+#previewBox .slider:before {
+    border-color: transparent transparent transparent #fff;
+}
+#previewBox .slider:after {
+    border-color: transparent #fff transparent transparent;
+}
+#panel .slider:before {
+    border-color: transparent transparent transparent #bbb;
+}
+#panel .slider:after {
+    border-color: transparent #bbb transparent transparent;
+}
+#previewBox #slideImage {
+    position: absolute;
+    left: 50%;
+    z-index: 4;
+}
+#previewBox:hover #slideImage {
+    opacity: 1;
+}
+#previewBox #slideImage:hover:before,
+#previewBox #slideImage:hover:after {
+    opacity: .9;
+}
+
+/* Panel
+----------------------*/
+
+#panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: var(--panel-width);
+    height: 100%;
+    padding: 40px;
+    z-index: 10;
+    overflow-x: visible;
+    overflow-y: scroll;
+    transition: var(--transition-opacity);
+}
+#panel .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    z-index: 20;
+}
+#panel.active .overlay {
+    display: none;
+}
+/* Mode switcher */
+#panel label[for="darkMode"] {
+    background: transparent;
+    float: right;
+    margin-bottom: 20px;
+    padding-right: 40px;
+    font-size: 12px;
+    color: #aaa;
+    position: relative;
+    cursor: pointer;
+}
+#panel label[for="darkMode"]:before,
+#panel label[for="darkMode"]:after {
+    position: absolute;
+    right: 0;
+    content: "";
+    transition: var(--transition-all);
+}
+#panel label[for="darkMode"]:before {
+    top: 4px;
+    background: #ccc;
+    width: 24px;
+    height: 8px;
+    border-radius: 10px;
+}
+#panel label[for="darkMode"]:after {
+    top: 0px;
+    background: #fff;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+}
+#panel #darkMode:checked ~ label:before {
+    background: #444;
+}
+#panel #darkMode:checked ~ label:after {
+    right: 9px;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+/* Actions */
+#panel .actions .title,
+#panel .quickFilters .title {
+    margin-top: 14px;
+}
+#panel .actions > .action {
+    float: left;
+    width: 45%;
+    font-size: 12px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10%;
+    transition: var(--transition-all);
+}
+#panel .actions > .action:not(#generate) {
+    opacity: .5;
+}
+#panel .actions > .action:not(#generate):hover {
+    opacity: 1;
+}
+#panel .actions > .action.generate {
+    background: var(--primary-color);
+    text-decoration: none;
+    margin-right: 0;
+}
+#panel #openMarkup {
+    float: right;
+    font-size: 11px;
+    margin-top: 20px;
+    margin-right: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: .6;
+    transition: var(--transition-all);
+}
+#panel #openMarkup:hover {
+    opacity: 1;
+}
+/* Slider */
+#slidePanel {
+    position: fixed;
+    left: var(--panel-width);
+    z-index: 11;
+    display: none;
+}
+#panel.active #slidePanel {
+    display: block;
+}
+#panel.active:hover #slidePanel {
+    opacity: 1;
+}
+/* Controls and elements */
+#controls {
+    float: left;
+    margin-top: 10px;
+}
+#panel .field {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+#panel .title {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 4px;
+    opacity: .6;
+}
+#panel .field .value {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    font-size: 10px;
+}
+/* Range inputs */
+#panel .field input[type="range"] {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+#panel .field input[type=range] {
+    width: 100%;
+}
+#panel .field input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    border-radius: 0;
+    transition: var(--transition-all);
+}
+#panel .field input[type=range]::-webkit-slider-thumb {
+    width: 15px;
+    height: 15px;
+    margin-top: -7px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-appearance: none;
+    transition: var(--transition-all);
+}
+/* Radio buttons */
+#panel .field label.radio {
+    position: relative;
+    float: left;
+    width: 20%;
+    padding-left: 22px;
+    margin-top: 18px;
+    cursor: pointer;
+    font-size: 12px;
+}
+#panel .field label.radio:not(:last-of-type) {
+    margin-right: 5%;
+}
+#panel .field label.radio:before,
+#panel .field label.radio:after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    transition: var(--transition-all);
+}
+#panel .field label.radio:before {
+    top: -1px;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-style: solid;
+    border-width: 1px;
+}
+#panel .field label.radio:after {
+    top: 2px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+#panel .field label.radio:hover:after {
+    opacity: .3;
+}
+#panel .field input.radio:checked + label.radio:after {
+    opacity: 1;
+}
+/* GitHub link */
+#panel .github {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    opacity: .4;
+    transition: var(--transition-all);
+}
+#panel .github:hover {
+    opacity: 1;
+}
+#panel .github svg {
+    width: 20px;
+    vertical-align: middle;
+    margin-top: -4px;
+}
+/* Markup */
+#panel #markup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: var(--transition-all);
+}
+#panel #markup.active {
+    transform: translateX(0);
+}
+#panel #markup p {
+    line-height: 20px;
+    opacity: 0.7;
+}
+#panel #markup .title {
+    margin: 20px 0;
+}
+#panel #markup #nono {
+    display: none;
+}
+#panel #markup pre {
+    overflow: auto;
+    padding: 14px;
+    line-height: 20px;
+}
+#panel #markup pre,
+#panel #markup pre div {
+    font-size: 11px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#panel #markup svg {
+    height: 40px;
+    width: 24px;
+    margin-top: 14px;
+    cursor: pointer;
+}
