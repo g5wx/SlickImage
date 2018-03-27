@@ -10,6 +10,7 @@ var SlickImage = {
         // Settings
         this.downloadQuality = 1;
         this.downloadName    = 'filtered_';
+        this.imageFormat     = 'jpeg';
 
         // File upload
         this.fileUpload();
@@ -310,6 +311,17 @@ var SlickImage = {
 
         }
 
+        // Image format
+        var formatInputs = document.getElementsByName('imageFormat');
+        for (var i = 0; i < formatInputs.length; i++) {
+
+            var input = formatInputs[i];
+            input.addEventListener('change', function() {
+                SlickImage.imageFormat = this.value;
+            }, false);
+
+        }
+
     },
 
     // Generate image
@@ -326,8 +338,8 @@ var SlickImage = {
             ctx.filter    = newImage.style.filter;
             ctx.drawImage(newImage, 0, 0);
 
+            this.href = canvas.toDataURL('image/' + SlickImage.imageFormat, SlickImage.downloadQuality);
             this.download = SlickImage.downloadName + '_filtered_' + index;
-            this.href = canvas.toDataURL('image/jpeg', SlickImage.downloadQuality);
 
             index++;
 
