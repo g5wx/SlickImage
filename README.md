@@ -12,3 +12,7 @@ You can use it in two ways:
 ### License
 
 This project is licensed under the MIT License. See the LICENSE.md file for more details.
+
+### Notes
+
+* Currently supported browsers: Google Chrome, Opera, Safari.
